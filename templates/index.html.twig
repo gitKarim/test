@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Poster vos Commentaires</h1>
+<div class=" container row" >
+    {% if comments %}
+
+        {% for comment in comments %}
+            <div class="card col-md-3" style="display: flex ;justify-content: space-evenly; margin-left: 5px ; box-sizing: border-box ">
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{ comment.user.nom }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ comment.createdAt | date('d/m/Y') }}</h6>
+                        <p class="card-text">{{ comment.content }}</p>
+                        <a href="{{ path('edit_comment', {'id' : comment.id }) }}" class="card-link">Modifier</a>
+                        <a href="{{ path('delete_comment', { 'id':comment.id}) }}" class="card-link">Supprimer</a>
+                        <a href="{{ path('read_comment', { 'id':comment.id}) }}" class="card-link">Lire</a>
+                    </div>
+
+
+
+            </div>
+        {% endfor %}
+
+    {% endif %}
+</div>
+    <div class="container ">
+        {{ form_start(formcomment) }}
+
+        {{ form_widget(formcomment) }}
+        <button class="btn btn-success">Commenter</button>
+        {{ form_end(formcomment) }}
+    </div>
+
+
+
+
+
+{% endblock %}

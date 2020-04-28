@@ -1,0 +1,14 @@
+{%  extends 'base.html.twig'  %}
+
+
+{% block body %}
+
+    <div class="container">
+
+        {{ form_start(registerform)}}
+        {{ form_widget(registerform)}}
+        <button>s'inscrire</button>
+        {{ form_end(registerform)}}
+    </div>
+
+{% endblock %}
